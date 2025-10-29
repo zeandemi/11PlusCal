@@ -49,23 +49,7 @@ public class standardisedScore {
 
         } else {
 
-            // call method to calculate standardised scores from adjusted results
-            double standardisedEnglishScore = calStandardisedScoreFromResult(desiredScore, daysYoung,
-                    englishAgeAdjustment);
-            double standardisedMathScore = calStandardisedScoreFromResult(desiredScore, daysYoung,
-                    mathAgeAdjustment);
-                    
-            double englishFinalScore = desiredScore/1.5 - standardisedMathScore;
-            double mathFinalScore = desiredScore/1.5 - standardisedEnglishScore;
-
-            // call method to calculate raw scores from standardised scores
-            double rawEnglishScore = calRawScoreFromStandardisedScore(englishMean, englishStdDev, standardisedEnglishScore);
-            double rawMathScore = calRawScoreFromStandardisedScore(mathMean, mathStdDev, standardisedMathScore);
-
-
-
-            double FinalScore = 1.5 * (standardisedEnglishScore + standardisedMathScore);
-            return FinalScore;
+            return 0.0;
 
         }
     }
@@ -80,19 +64,6 @@ public class standardisedScore {
         // calculate adjusted standardised score
         double result = standardised + (agesYoung * subjectAdjustment);
         return result;
-    }
-
-    private double calRawScoreFromStandardisedScore(double mean, double Sdev, double standardisedScore) {
-        // caluculate raw score using the formula
-        double derivedScore = standardisedScore - 100;
-        double rawScore = ( derivedScore/ 15) * Sdev + mean;
-        return rawScore;
-    }
-
-    private double calStandardisedScoreFromResult(double desiredScore, long agesYoung, double subjectAdjustment) {
-        // calculate adjusted standardised score
-        double standardised = desiredScore / (agesYoung * subjectAdjustment);
-        return standardised;
     }
 
     public static void main(String[] args) {
